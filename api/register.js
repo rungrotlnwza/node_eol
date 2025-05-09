@@ -4,12 +4,12 @@ const pool = require('../config/connect') // เรียกใช้ pool โ�
 module.exports = async (req, res) => {
   const { username, password, confirm } = req.body
 
-  if (!username || !password) {
-    return res.status(400).json({ error: "กรุณากรอกข้อมูลให้ครบ" })
+  if (!username || !password || !confirm) {
+    return res.status(400).json({ error: "Incomplete information" })
   }
 
   if (password !== confirm) {
-    return res.status(400).json({ error: "รหัสผ่านไม่ตรงกัน" })
+    return res.status(400).json({ error: "password is not mate" })
   }
 
   try {
