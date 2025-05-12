@@ -4,5 +4,13 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
+router.get('/signin',(req,res) => {
+  // signin คือ การ login
+  res.sendFile(path.join(__dirname,('../public/signin.html')))
+});
+router.get('/signup',(req,res)=>{
+  // signup คือ การ register
+  res.sendFile(path.join(__dirname,('../public/signup.html')))
+});
 
 module.exports = router;
