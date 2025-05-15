@@ -11,3 +11,4 @@ var typed = new Typed("#typed", {
     console.log("Completed!", self);
   },
 });
+

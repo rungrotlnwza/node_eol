@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="signin" class="bg-dark">
+    <div id="navbar"></div>
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <form class="welcome text-center row justify-content-center vh-100  align-items-center" id="signin-form">
+            <div class="col-12 col-md-6 mb-4 d-none d-md-block">
+                <h1 class="text-warning">Signin</h1>
+            </div>
+            <div class="col-12 col-md-6 mb-3 d-flex flex-column align-items-center">
+                <h1 class="text-warning d-block d-md-none">Signin</h1>
+                <input type="text" class="form-control mt-3 w-75" name="email" placeholder="อีเมล" autocomplete="username" required>
+                <input type="password" class="form-control mt-3 w-75" name="password" placeholder="รหัสผ่าน" autocomplete="password" required>
+                <div class="d-flex flex flex-column align-items-start w-75 mb-3 mt-3">
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="keep-logged-in">
+                        <label class="form-check-label text-light" for="keep-logged-in">Keep me logged in</label>
+                    </div>
+                    <a href="/forgotpassword" class="text-decoration-none text-danger">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-warning w-75 mt-3">เข้าสู่ระบบ</button>
+                <p class="text-center mb-0 text-warning mt-3">Don't have an account?
+                    <a href="/signup" class="text-primary">Sign up</a>
+                </p>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="assets/js/script.js"></script>
+    <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body id="signup" class="bg-dark">
+    <div id="navbar"></div>
+    <div class="container-fluid">
+        <form id="signup-form" class="welcome text-center row justify-content-center vh-100 align-items-center">
+            <!-- Left Section (visible on desktop) -->
+            <div class="col-12 col-md-6 mb-4 d-none d-md-block">
+                <h1 class="text-warning">Signup</h1>
+                <p class=""></p>
+            </div>
+
+            <!-- Right Section (form inputs) -->
+            <div class="col-12 col-md-6 mb-3 d-flex flex-column align-items-center">
+                <h1 class="text-warning d-block d-md-none">Signup</h1>
+
+                <input id="username" name="username" type="text" class="form-control mt-3 w-75" placeholder="username"
+                    aria-label="Username" autocomplete="username" required />
+
+                <input id="password" name="password" type="password" class="form-control mt-3 w-75"
+                    placeholder="password" aria-label="password" autocomplete="new-password" required />
+
+                <input id="confirm_password" name="confirm_password" type="password" class="form-control mt-3 w-75"
+                    placeholder="confirm password" aria-label="confirm_password" autocomplete="new-password" required />
+
+                <button onclick="Click_Register(event)" id="register" type="button" class="btn btn-warning w-75 mt-3">
+                    สมัครสมาชิก
+                </button>
+
+                <p class="text-center mb-0 text-warning mt-3">
+                    You have an account?
+                    <a href="/signin" class="text-primary">Sign in</a>
+                </p>
+            </div>
+        </form>
+    </div>
+    <!-- <script type="module" src=""></script> -->
+    <script type="module" src="assets/js/script.js"></script>
+    <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script>
+        async function Click_Register(event) {
+            // ต้องเพิ่ม async ตรงนี้
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm_password").value;
+            let data = { username, password, confirm };
+
+            if (!username || !password || !confirm) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน"); // ควรแจ้งผู้ใช้แทนการ console.log
+                return; // หยุดการทำงานถ้าข้อมูลไม่ครบ
+            }
+
+            try {
+                const response = await fetch("/api/register", {
+                    // ใส่ / นำหน้าเพื่อให้เป็น absolute path
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.success); // แจ้งเตือนการสมัครสำเร็จ
+                    window.location.href = "/signin"; // redirect ไปหน้า login
+                } else {
+                    alert(result.error); // แจ้ง error ที่ได้จาก backend
+                }
+            } catch (error) {
+                console.error("เกิดข้อผิดพลาดในการเชื่อมต่อ:", error);
+                alert("เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์");
+            } finally {
+                event.preventDefault();
+                event.target.disabled = false; // เปิดปุ่มกลับหลังจากทำงานเสร็จ
+            }
+        }
+    </script> -->
+</body>
+
+</html>
