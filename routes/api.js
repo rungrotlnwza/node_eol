@@ -1,7 +1,7 @@
-
 const router = require('express').Router();
 
 router.post('/register', require('../api/register'))
-router.post('/login',require('../api/login'))
+router.post('/signin', require('../api/signin'))
+
 
 module.exports = router;

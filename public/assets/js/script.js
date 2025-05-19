@@ -1,25 +1,20 @@
 import { Component } from "./renderkit.js";
+import { getCookie } from './cookie_get.js';
+
 if (document.getElementById("navbar")) {
     Component.load("navbar", "components/navbar.html").then(() => {
-        toggleNavbarByAuth();
+        const user = getCookie("user");
+
+        if (user) {
+            document.getElementById('unlogin').style.display = "none";
+        } else {
+            document.getElementById('login').style.display = "none";
+        }
     });
-
-    function toggleNavbarByAuth() {
-        const token = localStorage.getItem("auth_token");
-        const loginItems = document.querySelectorAll(".login");
-        const unloginItems = document.querySelectorAll(".unlogin");
-        const isLoggedIn = !!token;
-
-        loginItems.forEach(
-            (el) => (el.style.display = isLoggedIn ? "flex" : "none")
-        );
-        unloginItems.forEach(
-            (el) => (el.style.display = isLoggedIn ? "none" : "flex")
-        );
-    }
 } else {
     console.warn("⚠️ ไม่พบ navbar");
 }
+
 
 if (document.getElementById("footer")) {
     Component.load("footer", "components/footer.html");
@@ -35,9 +30,7 @@ if (document.getElementById("signup")) {
     });
 }
 if (document.getElementById("signin")) {
-    try {
-        import ("./login.js")
-    } catch {
-        console.log("can't import ./login")
-    }
+    import ('./login.js').then((mod) => {
+        window.Click_Login = mod.Click_Login
+    })
 }
