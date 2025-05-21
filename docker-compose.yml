@@ -1,0 +1,35 @@
+services:
+  nodeapp:
+    image: node:20
+    container_name: nodeapp
+    working_dir: /app
+    volumes:
+      - ./node:/app
+    ports:
+      - "80:3000"
+    command: ["npm", "start"]
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: iflovethenus
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: iflovethenus
+
+volumes:
+  db_data:
