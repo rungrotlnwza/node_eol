@@ -3,7 +3,7 @@ import { getCookie } from "./cookie_get.js";
 
 if (document.getElementById("navbar")) {
   Component.load("navbar", "components/navbar.html").then(() => {
-    const user = getCookie("user");
+    const user = getCookie("username");
 
     if (user) {
       document.getElementById("unlogin").style.display = "none";
@@ -29,7 +29,7 @@ if (document.getElementById("signup")) {
   });
 }
 if (document.getElementById("signin")) {
-  if (document.cookie.includes("user")) {
+  if (document.cookie.includes("username")) {
     window.location.href = "/";
   }
   import("./login.js").then((mod) => {
