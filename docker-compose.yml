@@ -1,6 +1,6 @@
 services:
   nodeapp:
-    image: node:20
+    image: node:22.16.0
     container_name: nodeapp
     working_dir: /app
     volumes:
@@ -11,7 +11,7 @@ services:
 
 
   mariadb:
-    image: mariadb:latest
+    image: mariadb:11.0
     container_name: mariadb
     restart: always
     environment:
@@ -23,11 +23,11 @@ services:
       - db_data:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:5.2.2
     container_name: phpmyadmin
     restart: always
     ports:
-      - "8081:80"
+      - "81:80"
     environment:
       PMA_HOST: mariadb
       MYSQL_ROOT_PASSWORD: iflovethenus

@@ -1,0 +1,96 @@
+node/
+├── api/
+│   ├── register.js
+│   ├── signin.js
+├── config/
+│   └── connect.js
+├── doc/
+│   ├── js.doc.md
+│   ├── login.md
+│   ├── register.md
+├── key/
+│   ├── private.pem
+│   └── public.pem
+├── middleware/
+│   ├── datacheck.js
+├── public/                              # โฟลเดอร์สำหรับ static content ทั้งหมด
+│   ├── assets/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   ├── images/                      # ไฟล์รูปภาพทั้งหมด
+│   │   ├── js/
+│   │       ├── cookie_get.js
+│   │       ├── login.js
+│   │       ├── marquee.js
+│   │       ├── register.js
+│   │       ├── renderkit.js
+│   │       ├── script.js
+│   │       ├── typed.js
+│   ├── components/
+│   │   ├── footer.html
+│   │   ├── navbar.html
+│   ├── index.html                       #1 ✅ หน้าแรกของเว็บ เป็น landing page รวมลิงก์ไปยังทุกส่วนของเว็บ
+│   ├── register.html                    #2 ✅ สมัครสมาชิกใหม่
+│   ├── login.html                       #3 ✅ ล็อกอินเข้าสู่ระบบ
+│   ├── dashboard.html                   #4 ✅ ศูนย์รวมสำหรับทั้ง user และ admin
+│   │   ├── section: profile             #4.1 ข้อมูลส่วนตัวของผู้ใช้
+│   │   ├── section: edit-profile        #4.2 แก้ไขชื่อ อีเมล รูปภาพ ฯลฯ
+│   │   ├── section: change-password     #4.3 เปลี่ยนรหัสผ่าน
+│   │   ├── section: learning-history    #4.4 ประวัติการเรียนของผู้ใช้
+│   │   ├── section: my-courses          #4.5 คอร์สที่ลงเรียนอยู่ทั้งหมด
+│   │   ├── section: overview            #4.6 [admin only]
+│   │   ├── section: user-list           #4.7 [admin only]
+│   │   ├── section: user-detail         #4.8 [admin only]
+│   │   ├── section: course-list         #4.9 [admin only]
+│   │   ├── section: course-create       #4.10 [admin only]
+│   │   ├── section: course-edit         #4.11 [admin only]
+│   │   ├── section: course-preview      #4.12 [admin only]
+│   │   ├── section: lesson-list         #4.13 [admin only]
+│   │   ├── section: lesson-edit         #4.14 [admin only]
+│   │   ├── section: article-list        #4.15 [admin only]
+│   │   ├── section: article-edit        #4.16 [admin only]
+│   │   ├── section: article-preview     #4.17 [admin only]
+│   │   ├── section: content-library     #4.18 [admin only]
+│   │   ├── section: test-bank           #4.19 [admin only]
+│   │   ├── section: announcement        #4.20 [admin only]
+│   │   ├── section: settings            #4.21 [admin only]
+│   │   ├── section: traffic-stats       #4.22 [admin only]
+│   ├── eol-personal.html                #5 คอร์สเรียนออนไลน์สำหรับบุคคลทั่วไป
+│   ├── one-year-course.html             #6 คอร์สแบบรายปี
+│   ├── order-product.html               #7 สั่งซื้อสินค้า/คอร์สเรียน
+│   ├── contact.html                     #8 แบบฟอร์มติดต่อ / ข้อมูลติดต่อ
+│   ├── one-day-one-sentence.html        #9 บทความสั้นประจำวัน
+│   ├── english-from-news.html           #10 เรียนภาษาอังกฤษจากข่าว
+│   ├── easy-english.html                #11 ภาษาอังกฤษง่าย ๆ สำหรับทุกคน
+│   ├── grammar-writing.html             #12 บทเรียนแกรมม่าและการเขียน
+│   ├── comprehensive-listening.html     #13 แบบฝึกฝนทักษะการฟัง
+│   ├── pronunciation-phonetic.html      #14 ฝึกออกเสียง โฟนิกส์
+│   ├── communicative-english.html       #15 ภาษาอังกฤษเพื่อการสื่อสาร
+│   ├── song-of-souls.html               #16 เรียนผ่านบทเพลง
+│   ├── movie-world.html                 #17 เรียนผ่านภาพยนตร์
+│   ├── gepot-testing.html               #18 รายละเอียดการสอบ GEPOT
+│   ├── cu-tep.html                      #19 ข้อมูลการสอบ CU-TEP
+│   ├── toefl.html                       #20 ข้อมูลการสอบ TOEFL
+│   ├── toeic.html                       #21 ข้อมูลการสอบ TOEIC
+│   ├── ielts.html                       #22 ข้อมูลการสอบ IELTS
+│   ├── cefr.html                        #23 ข้อมูลมาตรฐาน CEFR
+│   ├── admission.html                   #24 การสอบ Admission
+│   ├── eol-intelligence.html            #25 ระบบวิเคราะห์ผลการเรียน
+│   ├── eol-member-club.html             #26 สิทธิพิเศษของสมาชิก
+│   ├── eol-corporate.html               #27 คอร์สสำหรับองค์กร
+│   ├── eol-corporate-platform.html      #28 ระบบการเรียนรู้สำหรับองค์กร
+│   ├── about-eol.html                   #29 ข้อมูลเกี่ยวกับบริษัท EOL
+│   ├── what-is-eol.html                 #30 EOL คืออะไร
+│   ├── eol-history.html                 #31 ประวัติความเป็นมา
+│   ├── product-policy.html              #32 นโยบายการเปลี่ยนสินค้า
+│   ├── product-warranty.html            #33 การรับประกันสินค้า/คอร์ส
+│   ├── site-security.html               #34 ข้อมูลความปลอดภัยเว็บไซต์
+│   ├── privacy-policy.html              #35 นโยบายความเป็นส่วนตัว
+│   ├── dispute-resolution.html          #36 ช่องทางร้องเรียน ข้อพิพาท
+│   ├── careers.html                     #37 สมัครงาน / ร่วมงานกับเรา
+├── routes/
+│   ├── api.js
+│   ├── web.js
+├── index.js
+├── package-lock.json
+├── package.json
