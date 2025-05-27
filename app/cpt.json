@@ -1,0 +1,49 @@
+{
+  "action": "next",
+  "messages": [
+    {
+      "id": "a1ea2ce0-6613-479f-b2c9-c33cb55631ef",
+      "author": {
+        "role": "user"
+      },
+      "create_time": 1748355374.569,
+      "content": {
+        "content_type": "text",
+        "parts": [
+          "ลองเล่นเกมทายคำป้ะ"
+        ]
+      },
+      "metadata": {
+        "selected_github_repos": [],
+        "selected_all_github_repos": false,
+        "serialization_metadata": {
+          "custom_symbol_offsets": []
+        }
+      }
+    }
+  ],
+  "conversation_id": "680e3ef5-872c-800c-acda-f4b0a446f271",
+  "parent_message_id": "2c30ced2-1067-486e-a3de-68f462650049",
+  "model": "gpt-4o",
+  "timezone_offset_min": -420,
+  "timezone": "Asia/Bangkok",
+  "conversation_mode": {
+    "kind": "primary_assistant"
+  },
+  "enable_message_followups": true,
+  "system_hints": [],
+  "supports_buffering": true,
+  "supported_encodings": [
+    "v1"
+  ],
+  "client_contextual_info": {
+    "is_dark_mode": true,
+    "time_since_loaded": 211,
+    "page_height": 953,
+    "page_width": 1165,
+    "pixel_ratio": 1,
+    "screen_height": 1080,
+    "screen_width": 1920
+  },
+  "paragen_cot_summary_display_override": "allow"
+}
