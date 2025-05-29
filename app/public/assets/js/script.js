@@ -36,3 +36,27 @@ if (document.getElementById("signin")) {
     window.Click_Login = mod.Click_Login;
   });
 }
+if(document.getElementById("profile")){
+  Component.load("profile","components/profile.html")
+  Component.load("edit-profile", "components/edit-profile.html").then(() => {
+    console.log("Edit profile component loaded successfully.");
+  const fileInputs = document.querySelectorAll('.select-file');
+
+  fileInputs.forEach(input => {
+    input.addEventListener('change', function () {
+      const previewId = this.getAttribute('data-preview');
+      if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = document.getElementById(previewId);
+          if (img) {
+            img.src = e.target.result;
+            img.style.display = 'inline-block';
+          }
+        };
+        reader.readAsDataURL(this.files[0]);
+      }
+    });
+  });
+});
+}

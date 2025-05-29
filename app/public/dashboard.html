@@ -1,31 +1,43 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="assets/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
         body {
-            margin: 0;
             min-height: 100vh;
             display: flex;
             flex-wrap: wrap;
+            margin: 0;
+            /* เปลี่ยนจากดำสนิทเป็นเทาเข้มนุ่มตา */
         }
 
         .sidebar {
+            position: fixed;
+            top: 56px;
+            /* ความสูงของ navbar */
+            bottom: 0;
+            left: 0;
             width: 250px;
-            width: 250px;
-            max-height: 100vh;
             overflow-y: auto;
+            z-index: 1000;
+            background-color: #ffffff;
+            border-right: 1px solid #ddd;
         }
 
         .main-content {
-            flex-grow: 1;
+            margin-left: 250px;
             padding: 2rem;
-            width: 100%;
+            padding-top: 80px;
+            /* เว้นจาก navbar เพิ่มอีกนิดให้หายทับ */
+            min-height: 100vh;
+            color: #f8f9fa;
         }
 
         .tabcontent {
@@ -36,9 +48,14 @@
             display: block;
         }
 
-        @media (min-width: 768px) {
+        @media (max-width: 767.98px) {
+            .sidebar {
+                display: none;
+            }
+
             .main-content {
-                width: calc(100% - 250px);
+                margin-left: 0;
+                padding-top: 80px;
             }
         }
     </style>
@@ -46,10 +63,11 @@
 
 </head>
 
-<body>
-
+<body class="bg-dark text-light">
+    <div id="navbar"></div>
+    <div class="welcome container-fluid d-none d-md-block"></div>
     <!-- Navbar มือถือ -->
-    <nav class="navbar navbar-light bg-light d-md-none w-100 position-fixed top-0 z-3">
+    <nav class="navbar navbar-light bg-light d-md-none w-100 top-0 z-3 mt-5" style="height: 70px;">
         <div class="container-fluid">
             <span class="navbar-brand">Dashboard</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
@@ -57,12 +75,12 @@
             </button>
         </div>
     </nav>
-
     <!-- Sidebar Desktop -->
-    <div class="sidebar bg-light p-3 d-none d-md-block">
-        <!-- <h5 class="mb-4">Dashboard</h5> -->
+    <div class="sidebar bg-light p-3 d-none d-md-block position-fixed"
+        style="top: 56px; bottom: 0; left: 0; width: 250px; overflow-y: auto;">
+
         <div class="list-group" id="dashboardMenu">
-            <button class="list-group-item list-group-item-action active" data-target="profile">ข้อมูลส่วนตัว</button>
+            <button class="list-group-item list-group-item-action" data-target="profile">ข้อมูลส่วนตัว</button>
             <button class="list-group-item list-group-item-action" data-target="edit-profile">แก้ไขโปรไฟล์</button>
             <button class="list-group-item list-group-item-action"
                 data-target="change-password">เปลี่ยนรหัสผ่าน</button>
@@ -91,11 +109,12 @@
         </div>
     </div>
 
+
     <!-- Main Content -->
-    <div class="main-content welcome">
+    <div class="main-content">
         <!-- Content แสดงตาม section -->
         <div id="profile" class="tabcontent active">
-            <h4>ข้อมูลส่วนตัว</h4>
+            <h4>แก้ไขโปรไฟล์</h4>
         </div>
         <div id="edit-profile" class="tabcontent">
             <h4>แก้ไขโปรไฟล์</h4>
@@ -172,37 +191,58 @@
             <div class="list-group" id="mobileMenuClone"></div>
         </div>
     </div>
-
-    <!-- Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Clone sidebar menu into offcanvas
         const originalMenu = document.getElementById('dashboardMenu');
         const mobileMenu = document.getElementById('mobileMenuClone');
         mobileMenu.innerHTML = originalMenu.innerHTML;
 
-        // Activate tab content toggle
-        function bindMenuEvents() {
-            const buttons = document.querySelectorAll('[data-target]');
+        // ฟังก์ชันหลัก: เปิด tab ตาม target id
+        function showTabById(targetId) {
             const tabs = document.querySelectorAll('.tabcontent');
+            const buttons = document.querySelectorAll('[data-target]');
 
-            buttons.forEach(btn => {
+            tabs.forEach(t => t.classList.remove('active'));
+            buttons.forEach(b => b.classList.remove('active'));
+
+            const activeTab = document.getElementById(targetId);
+            const activeBtn = document.querySelector(`[data-target="${targetId}"]`);
+
+            if (activeTab) activeTab.classList.add('active');
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // อัปเดต URL hash
+            window.location.hash = targetId;
+        }
+
+        // ผูก event กับเมนูทั้งหมด
+        function bindMenuEvents() {
+            const allButtons = document.querySelectorAll('[data-target]');
+            allButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const target = btn.getAttribute('data-target');
+                    showTabById(target);
 
-                    tabs.forEach(t => t.classList.remove('active'));
-                    document.getElementById(target).classList.add('active');
-
-                    buttons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+                    // ปิด offcanvas ถ้ามี (สำหรับ mobile)
+                    const canvas = bootstrap.Offcanvas.getInstance(document.getElementById('mobileSidebar'));
+                    if (canvas) canvas.hide();
                 });
             });
         }
 
-        // Call on load
+        // เรียก tab ที่สอดคล้องกับ URL hash ตอนโหลดหน้า
+        function loadInitialTab() {
+            const hash = window.location.hash.replace('#', '');
+            const initialTab = hash || 'profile'; // ถ้าไม่มี hash ให้ default เป็น profile
+            showTabById(initialTab);
+        }
+
+        // เรียกทุกอย่างตอนโหลด
         bindMenuEvents();
+        loadInitialTab();
     </script>
 
+    <script type="module" src="assets/js/script.js"></script>
 </body>
 
 </html>
